@@ -1,0 +1,530 @@
+@import "tailwindcss";
+@import 'pixel-retroui/dist/index.css';
+
+/* Fix: Explicitly declare Minecraft fonts with Vite-resolvable paths.
+   The relative URLs in pixel-retroui/dist/fonts.css fail during bundling,
+   so we override them here with direct node_modules paths. */
+@font-face {
+    font-family: 'Minecraft';
+    font-style: normal;
+    font-weight: 400;
+    src: url('/fonts/Minecraft.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Minecraft';
+    font-style: normal;
+    font-weight: 700;
+    src: url('/fonts/Minecraft-Bold.otf') format('opentype');
+}
+
+/* ─── Minecraft Font Utilities ─────────────────────────────────────────────
+   MUST be plain (unlayered) CSS placed AFTER the pixel-retroui @import.
+   Reason: pixel-retroui/dist/index.css bundles Tailwind v3 as unlayered CSS,
+   which always beats @layer utilities in the cascade. Two conflicts exist:
+     1) h1-h6 { font-weight: inherit }  → resets weight on headings
+     2) .font-minecraft { font-family: Minecraft } → no font-weight set
+   Solution: unlayered rules after the import + !important on font-weight.
+   ────────────────────────────────────────────────────────────────────────── */
+.font-minecraft {
+    font-family: 'Minecraft', sans-serif;
+    font-weight: 400 !important;
+}
+
+.font-minecraft-bold {
+    font-family: 'Minecraft', sans-serif;
+    font-weight: 700 !important;
+}
+
+/* ─── Responsive Display Fixes ──────────────────────────────────────────────
+   pixel-retroui/dist/index.css ships `.flex { display: flex }` as unlayered
+   CSS, so it always beats Tailwind's md:hidden / md:flex inside @layer
+   utilities. We must re-declare the responsive variants as unlayered CSS
+   (after the import) with !important so they reliably win.
+   ────────────────────────────────────────────────────────────────────────── */
+@media (min-width: 768px) {
+    .md\:hidden {
+        display: none !important;
+    }
+
+    .md\:flex {
+        display: flex !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .max-md\:hidden {
+        display: none !important;
+    }
+}
+
+/* Local Font Face */
+@font-face {
+    font-family: 'Pixelify Sans';
+    src: url('/assets/PixelifySans-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-display: swap;
+}
+
+/* Additional Custom Styles */
+
+/* ════════════════════════════════════════════════════════
+   GALLERY PAGE  — Pinterest Masonry Grid + Lightbox
+   ════════════════════════════════════════════════════════ */
+
+
+/* Header */
+
+
+.gallery-badge {
+    display: inline-block;
+    padding: 0.25rem 1rem;
+    border-radius: 999px;
+    background: rgba(243, 0, 81, 0.12);
+    border: 1px solid rgba(243, 0, 81, 0.3);
+    color: #F30051;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 1rem;
+}
+.gallery-sub {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 1rem;
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* ── Pinterest Masonry Grid ── */
+.pinterest-grid {
+    columns: 2;
+    column-gap: 12px;
+    padding: 0 12px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+@media (min-width: 640px) {
+    .pinterest-grid {
+        columns: 3;
+        column-gap: 14px;
+        padding: 0 16px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .pinterest-grid {
+        columns: 4;
+        column-gap: 16px;
+        padding: 0 24px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .pinterest-grid {
+        columns: 5;
+        column-gap: 16px;
+    }
+}
+
+/* Pin card */
+.pin-card {
+    break-inside: avoid;
+    margin-bottom: 12px;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    background: #1a1a24;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    display: block;
+}
+
+.pin-card:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 12px 32px rgba(243, 0, 81, 0.25);
+}
+
+.pin-card:focus {
+    outline: 2px solid #F30051;
+    outline-offset: 2px;
+}
+
+/* Image height variants for masonry feel */
+.pin-short .pin-img {
+    height: 200px;
+}
+
+.pin-tall .pin-img {
+    height: 320px;
+}
+
+@media (min-width: 768px) {
+    .pin-short .pin-img {
+        height: 240px;
+    }
+
+    .pin-tall .pin-img {
+        height: 380px;
+    }
+}
+
+.pin-img {
+    width: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.pin-card:hover .pin-img {
+    transform: scale(1.06);
+}
+
+/* Hover overlay label */
+.pin-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, transparent 50%);
+    display: flex;
+    align-items: flex-end;
+    padding: 14px;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+.pin-card:hover .pin-overlay {
+    opacity: 1;
+}
+
+.pin-label {
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 600;
+    background: rgba(243, 0, 81, 0.85);
+    padding: 3px 10px;
+    border-radius: 6px;
+    backdrop-filter: blur(4px);
+}
+
+/* ── Lightbox ── */
+.lightbox-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.92);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(8px);
+    animation: lb-fade-in 0.2s ease;
+}
+
+@keyframes lb-fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.lightbox-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 90vw;
+    max-height: 90vh;
+    animation: lb-scale-in 0.25s ease;
+}
+
+@keyframes lb-scale-in {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.lightbox-img {
+    max-width: 88vw;
+    max-height: 75vh;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.8);
+}
+
+.lightbox-caption {
+    color: #fff;
+    margin-top: 1rem;
+    font-size: 1rem;
+}
+
+.lightbox-counter {
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 0.8rem;
+    margin-top: 0.4rem;
+}
+
+.lightbox-close {
+    position: fixed;
+    top: 1.25rem;
+    right: 1.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: #fff;
+    font-size: 1.4rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+    z-index: 1001;
+}
+
+.lightbox-close:hover {
+    background: rgba(243, 0, 81, 0.8);
+}
+
+.lightbox-nav {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #fff;
+    font-size: 2.5rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, border-color 0.2s;
+    z-index: 1001;
+    line-height: 1;
+}
+
+.lightbox-nav:hover {
+    background: rgba(243, 0, 81, 0.7);
+    border-color: #F30051;
+}
+
+.lightbox-prev {
+    left: 1rem;
+}
+
+.lightbox-next {
+    right: 1rem;
+}
+
+@media (min-width: 768px) {
+    .lightbox-prev {
+        left: 2rem;
+    }
+
+    .lightbox-next {
+        right: 2rem;
+    }
+}
+
+
+/* Active nav link underline */
+.nav-active {
+    border-bottom: 2px solid #F30051;
+    color: #f4254d;
+    padding-bottom: 4px;
+}
+
+/* Active mobile nav link */
+.nav-active-mobile {
+    border-left: 2px solid #F30051;
+    color: #f4254d;
+    background: rgba(243, 0, 81, 0.08);
+}
+
+/* Smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Body overflow prevention */
+body {
+    overflow-x: hidden;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Animation for particles or background elements */
+@keyframes particle-float {
+    0% {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-100px);
+    }
+}
+
+/* Gradient text animation */
+@keyframes gradient-shift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Button hover effects */
+button {
+    position: relative;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* Link hover effects — only on plain text links, not buttons or nav items */
+nav a {
+    position: relative;
+}
+
+/* Form elements styling */
+input,
+textarea,
+select {
+    background: rgba(244, 37, 77, 0.05) !important;
+    border: 1px solid rgba(244, 37, 77, 0.2) !important;
+    color: #f4254d !important;
+    backdrop-filter: blur(12px);
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: rgba(168, 85, 247, 0.6);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    background: rgba(244, 37, 77, 0.08) !important;
+    border-color: rgba(168, 85, 247, 0.5) !important;
+    box-shadow: 0 0 12px rgba(168, 85, 247, 0.2);
+}
+
+/* Backdrop blur support fallback */
+
+/* Animation for countdown numbers */
+@keyframes number-flash {
+
+    0%,
+    100% {
+        text-shadow: 0 0 10px rgba(244, 37, 77, 0.5);
+    }
+
+    50% {
+        text-shadow: 0 0 20px rgba(168, 85, 247, 0.8);
+    }
+}
+
+.number-updated {
+    animation: number-flash 0.3s ease;
+}
+
+/* Loading animation */
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.spinner {
+    animation: spin 1s linear infinite;
+}
+
+/* Custom neon and glass styles */
+.neon-text-outline {
+    text-shadow: 0 0 10px rgba(244, 37, 77, 0.5), 0 0 20px rgba(168, 85, 247, 0.3);
+    -webkit-text-stroke: 1px rgba(244, 37, 77, 0.8);
+}
+
+
+
+.hero-gradient {
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    filter: brightness(1);
+}
+
+.button-neon {
+    position: relative;
+    overflow: hidden;
+    filter: brightness(1.1);
+}
+
+.button-neon::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(244, 37, 77, 0.2);
+    transition: left 0.5s ease;
+}
+
+.button-neon:hover::before {
+    left: 100%;
+}
+
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(168, 85, 247, 0.5);
+    transform: scale(0);
+    animation: ripple-animation 0.6s ease-out;
+    pointer-events: none;
+}
+
+@keyframes ripple-animation {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+@supports (-webkit-touch-callout: none) {
+    body {
+        -webkit-user-select: none;
+        -webkit-touch-callout: none;
+    }
+}
