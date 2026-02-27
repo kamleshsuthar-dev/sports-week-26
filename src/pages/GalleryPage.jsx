@@ -27,20 +27,20 @@ export function GalleryPage() {
 
     return (
         <div
-            className="bg-[url('/src/assets/bg1.png')] bg-cover bg-center bg-no-repeat"
+            className="bg-[url('/bg1.png')] bg-cover bg-center bg-no-repeat"
             onKeyDown={handleKey}
             tabIndex={-1}
             style={{ outline: 'none' }}
         >
             {/* ── Header ── */}
-            
+
 
             <div className="text-center space-y-4 flex flex-col items-center">
-            <div className="text-4xl font-minecraft-bold">
-              Last Year's Gallery
+                <div className="text-4xl font-minecraft-bold">
+                    Last Year's Gallery
+                </div>
+                <p className="text-secondary text-lg max-w-xl md:max-w-none mx-auto">Relive the energy, sweat, and glory of Sports Week 2025 — captured in every frame.</p>
             </div>
-            <p className="text-secondary text-lg max-w-xl md:max-w-none mx-auto">Relive the energy, sweat, and glory of Sports Week 2025 — captured in every frame.</p>
-          </div>
 
             {/* ── Pinterest Masonry Grid ── */}
             <div className="pinterest-grid">

@@ -56,8 +56,8 @@ export function FAQPage() {
   const [openFAQ, setOpenFAQ] = useState(null);
   const [activeCategory, setActiveCategory] = useState('all');
 
-  const filteredFAQ = activeCategory === 'all' 
-    ? faqData 
+  const filteredFAQ = activeCategory === 'all'
+    ? faqData
     : faqData.filter(item => item.category === activeCategory);
 
   const categories = [
@@ -71,9 +71,9 @@ export function FAQPage() {
 
   return (
     <>
-      <div className="bg-[url('/src/assets/bg1.png')] bg-cover bg-center bg-no-repeat relative w-full flex-1 flex-col hero-gradient overflow-x-hidden">
+      <div className="bg-[url('/bg1.png')] bg-cover bg-center bg-no-repeat relative w-full flex-1 flex-col hero-gradient overflow-x-hidden">
         <main className="flex-1 max-w-4xl mx-auto w-full px-4 md:px-8 py-12 md:py-16 space-y-12">
-          
+
           {/* Page Header */}
           <div className="text-center space-y-4 flex flex-col items-center">
             <div className="text-4xl font-minecraft-bold">
@@ -124,11 +124,11 @@ export function FAQPage() {
               //     </div>
               //   )}
               // </div>
-              
-                <AccordionItem value={item.id}>
-                  <AccordionTrigger>{item.question}</AccordionTrigger>
-                  <AccordionContent>{item.answer}</AccordionContent>
-                </AccordionItem>
+
+              <AccordionItem value={item.id}>
+                <AccordionTrigger>{item.question}</AccordionTrigger>
+                <AccordionContent>{item.answer}</AccordionContent>
+              </AccordionItem>
             ))}
           </Accordion>
         </main>

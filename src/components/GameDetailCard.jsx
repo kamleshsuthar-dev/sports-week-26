@@ -9,7 +9,7 @@ export function GameDetailCard({ game }) {
     <>
       <div style={{ backgroundImage: `url(${game.image})` }} className="bg-cover bg-center bg-no-repeat relative w-full flex flex-col hero-gradient overflow-x-hidden">
         <main className="flex flex-col flex-1 max-w-5xl mx-auto w-full px-4 md:px-8 py-12 md:py-16 space-y-10 gap-7">
-          
+
           {/* Back Button */}
           <div className="absolute top-6 left-1/6 transform -translate-x-1/2">
             <Button
@@ -23,15 +23,15 @@ export function GameDetailCard({ game }) {
 
           {/* Header */}
           <div className="text-center mt-12 flex flex-col items-center">
-              <div className="text-3xl md:text-4xl font-minecraft-bold mb-4">{game.title}</div>
-              <p className="text-secondary text-lg max-w-2/3">{game.about}</p>
-            </div>
+            <div className="text-3xl md:text-4xl font-minecraft-bold mb-4">{game.title}</div>
+            <p className="text-secondary text-lg max-w-2/3">{game.about}</p>
+          </div>
 
 
           {/* Coordinator + Register */}
           <Card className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="info-card p-6 flex items-center gap-6">
-              <img src="/src/assets/collegelogo.png" alt="Coordinator" className="w-24 h-24 rounded-full object-cover border-4 border-primary/50 shadow-lg flex-shrink-0"/>
+              <img src="/collegelogo.png" alt="Coordinator" className="w-24 h-24 rounded-full object-cover border-4 border-primary/50 shadow-lg flex-shrink-0" />
               <div className="space-y-2">
                 <p className="text-secondary text-xs uppercase tracking-wider">Sports Coordinator</p>
                 <h3 className="text-primary text-xl font-bold">{game.coordinator}</h3>
@@ -51,7 +51,7 @@ export function GameDetailCard({ game }) {
                 <h3 className="text-primary text-xl font-bold mb-1">Ready to Participate?</h3>
                 <p className="text-secondary text-sm">Fill out the registration form to secure your spot.</p>
               </div>
-              <Button 
+              <Button
                 bg="#FFBB0E"
                 textColor="black"
                 borderColor="black"
@@ -60,7 +60,7 @@ export function GameDetailCard({ game }) {
                 onClick={() =>
                   window.open(`${game.registerationForm}`, '_blank', 'noopener,noreferrer')
                 }
-                >
+              >
                 Register via Google Form
               </Button>
             </div>
@@ -111,7 +111,7 @@ export function GameDetailCard({ game }) {
           </div>
 
           {/* Back Button */}
-          
+
         </main>
 
         {/* Footer */}
