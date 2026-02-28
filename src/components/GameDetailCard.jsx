@@ -7,19 +7,28 @@ export function GameDetailCard({ game }) {
 
   return (
     <>
-      <div style={{ backgroundImage: `url(${game.image})` }} className="bg-cover bg-center bg-no-repeat relative w-full flex flex-col hero-gradient overflow-x-hidden">
+      {/* ── Fixed background: pinned to viewport, scrolls behind content ── */}
+      <div
+        style={{ backgroundImage: `url(${game.bgImage})` }}
+        className="fixed inset-0 -z-10 bg-cover bg-bottom md:bg-center bg-no-repeat"
+      />
+      {/* ── Fixed dark overlay for readability ── */}
+      {/* <div className="fixed inset-0 -z-10 bg-black/60" /> */}
+
+      {/* ── Scrollable page content ── */}
+      <div className="relative w-full flex flex-col overflow-x-hidden">
         <main className="flex flex-col flex-1 max-w-5xl mx-auto w-full px-4 md:px-8 py-12 md:py-16 md:space-y-10 gap-7">
 
           {/* Back Button */}
-          <div className="absolute top-6 left-1/6 transform -translate-x-1/2">
+          {/* <div className="absolute top-6 left-1/6 transform -translate-x-1/2">
             <Button
               onClick={() => navigate('/game')}
-              className="!hidden md:flex items-center gap-2 px-2 py-1"
+              className="hidden! !md:flex items-center gap-2 px-2 py-1"
             >
               <span className="material-symbols-outlined md:text-lg">arrow_back</span>
               Back to Games
             </Button>
-          </div>
+          </div> */}
 
           {/* Header */}
           <div className="text-center md:mt-12 flex flex-col items-center">
@@ -110,12 +119,10 @@ export function GameDetailCard({ game }) {
             </Card>
           </div>
 
-          {/* Back Button */}
-
         </main>
 
         {/* Footer */}
-        <footer className="border-t border-white/10   py-8 px-6 text-center text-sm">
+        <footer className="border-t border-white/10 py-8 px-6 text-center text-sm">
           © 2026 Sports Week · Government Engineering College, Patan
         </footer>
       </div>

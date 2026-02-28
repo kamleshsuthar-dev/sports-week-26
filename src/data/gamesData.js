@@ -11,12 +11,28 @@ import imgChess from '../assets/chess.png';
 import imgCarrom from '../assets/carrom.png';
 import imgGullyCricketGirls from '../assets/gully-cricket-girls.png';
 
+// ── Detail-page background images (full-bleed, separate from card thumbnails) ──
+import bgDefault from '../assets/bg1.png';
+import bgGullyCricketGirls from '../assets/gully-cricket-girls-bg.png';
+import bgCricket from '../assets/cricket-bg.png';
+import bgKabaddi from '../assets/kabbadi-bg.png';
+import bgVolleyball from '../assets/volleyball-bg.png';
+import bgKhoKhoBoys from '../assets/kho-kho-boys-bg.png';
+import bgKhoKhoGirls from '../assets/kho-kho-girls-bg.png';
+import bgBadminton from '../assets/badminton-bg.png';
+import bgBadmintonGirls from '../assets/badminton-girls-bg.png';
+import bgTableTennis from '../assets/table-tennis-bg.png';
+import bgChess from '../assets/chess-bg.png';
+import bgCarrom from '../assets/carrom-bg.png';
+import bgTugOfWar from '../assets/tug-of-war-bg.png';
+
 export const allGames = [
   {
     id: 'tugofwar',
     title: 'Tug Of War',
     category: 'Team',
     image: imgTugOfWar,
+    bgImage: bgTugOfWar,
     registerationForm: 'https://forms.google.com/',
     teamSize: '8 players',
     eventDate: 'March 12, 2026',
@@ -40,6 +56,7 @@ export const allGames = [
     title: 'Cricket',
     category: 'Team',
     image: imgCricket,
+    bgImage: bgCricket,
     registerationForm: 'https://forms.gle/your-google-form-link',
     teamSize: '11 Players',
     eventDate: 'March 12, 2026',
@@ -63,6 +80,7 @@ export const allGames = [
     title: 'Kabaddi',
     category: 'Team',
     image: imgKabaddi,
+    bgImage: bgKabaddi,
     registerationForm: 'https://forms.gle/your-google-form-link',
     teamSize: '7 Players',
     eventDate: 'March 14, 2026',
@@ -86,6 +104,7 @@ export const allGames = [
     title: 'Volleyball',
     category: 'Team',
     image: imgVolleyball,
+    bgImage: bgVolleyball,
     registerationForm: 'https://forms.gle/your-google-form-link',
     teamSize: '6 Players',
     eventDate: 'March 15, 2026',
@@ -109,6 +128,7 @@ export const allGames = [
     title: 'Kho Kho (Boys)',
     category: 'Team',
     image: imgKhoKhoBoys,
+    bgImage: bgKhoKhoBoys,
     registerationForm: 'https://forms.gle/your-google-form-link',
     teamSize: '9 Players',
     eventDate: 'March 16, 2026',
@@ -132,6 +152,7 @@ export const allGames = [
     title: 'Kho Kho (Girls)',
     category: 'Team',
     image: imgKhoKhoGirls,
+    bgImage: bgKhoKhoGirls,
     registerationForm: 'https://forms.gle/your-google-form-link',
     teamSize: '9 Players',
     eventDate: 'March 16, 2026',
@@ -155,6 +176,7 @@ export const allGames = [
     title: 'Badminton (Boys)',
     category: 'Racquet',
     image: imgBadmintonBoys,
+    bgImage: bgBadminton,
     registerationForm: 'https://forms.gle/your-google-form-link',
     teamSize: 'Single/Double',
     eventDate: 'March 17, 2026',
@@ -178,6 +200,7 @@ export const allGames = [
     title: 'Badminton (Girls)',
     category: 'Racquet',
     image: imgBadmintonGirls,
+    bgImage: bgBadmintonGirls,
     registerationForm: 'https://forms.gle/your-google-form-link',
     teamSize: 'Single/Double',
     eventDate: 'March 17, 2026',
@@ -201,6 +224,7 @@ export const allGames = [
     title: 'Table Tennis',
     category: 'Racquet',
     image: imgTableTennis,
+    bgImage: bgTableTennis,
     registerationForm: 'https://forms.gle/your-google-form-link',
     teamSize: 'Single/Double',
     eventDate: 'March 18, 2026',
@@ -224,6 +248,7 @@ export const allGames = [
     title: 'Chess',
     category: 'Board',
     image: imgChess,
+    bgImage: bgChess,
     registerationForm: 'https://forms.gle/your-google-form-link',
     teamSize: 'Individual',
     eventDate: 'March 19, 2026',
@@ -247,6 +272,7 @@ export const allGames = [
     title: 'Carrom',
     category: 'Board',
     image: imgCarrom,
+    bgImage: bgCarrom,
     registerationForm: 'https://forms.gle/your-google-form-link',
     teamSize: 'Single/Double',
     eventDate: 'March 20, 2026',
@@ -270,6 +296,7 @@ export const allGames = [
     title: 'Gully Cricket (Girls)',
     category: 'Team',
     image: imgGullyCricketGirls,
+    bgImage: bgGullyCricketGirls,
     registerationForm: 'https://forms.gle/your-google-form-link',
     teamSize: '6-8 Players',
     eventDate: 'March 21, 2026',

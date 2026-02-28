@@ -1,107 +1,43 @@
+// Gallery images imported from src/assets/gallery/
+// Vite requires static imports so assets are properly fingerprinted and bundled.
+
+import img1 from '../assets/gallery/1.jpg';
+import img2 from '../assets/gallery/2.jpg';
+import img3 from '../assets/gallery/3.jpg';
+import img4 from '../assets/gallery/4.jpg';
+import img5 from '../assets/gallery/5.jpg';
+import img6 from '../assets/gallery/6.jpg';
+import img7 from '../assets/gallery/7.jpg';
+import img8 from '../assets/gallery/8.jpg';
+import img9 from '../assets/gallery/9.jpg';
+import img10 from '../assets/gallery/10.jpg';
+import img11 from '../assets/gallery/11.jpg';
+import img12 from '../assets/gallery/12.jpg';
+import img13 from '../assets/gallery/13.jpg';
+import img14 from '../assets/gallery/14.jpg';
+import img15 from '../assets/gallery/15.jpg';
+import img16 from '../assets/gallery/16.jpg';
+import img17 from '../assets/gallery/17.jpg';
+import img18 from '../assets/gallery/18.jpg';
+import img19 from '../assets/gallery/19.jpg';
+import img20 from '../assets/gallery/20.jpg';
+import img21 from '../assets/gallery/21.jpg';
+import img22 from '../assets/gallery/22.jpg';
+import img23 from '../assets/gallery/23.jpg';
+import img24 from '../assets/gallery/24.jpg';
+import img25 from '../assets/gallery/25.jpg';
+import img26 from '../assets/gallery/26.jpg';
+import img27 from '../assets/gallery/27.jpg';
+import img28 from '../assets/gallery/28.jpg';
+import img29 from '../assets/gallery/29.jpg';
+
 export const galleryImages = [
-    {
-        id: 1,
-        src: '/src/assets/cricket.png',
-        alt: 'Cricket',
-        label: 'Cricket',
-        span: 'tall',
-    },
-    {
-        id: 2,
-        src: '/src/assets/tug-of-war.png',
-        alt: 'Tug of War',
-        label: 'Tug of War',
-        span: 'short',
-    },
-    {
-        id: 3,
-        src: '/src/assets/badminton.png',
-        alt: 'Badminton',
-        label: 'Badminton',
-        span: 'short',
-    },
-    {
-        id: 4,
-        src: '/src/assets/kho-kho-boys.png',
-        alt: 'Boys Kho-Kho',
-        label: 'Boys Kho-Kho',
-        span: 'tall',
-    },
-    {
-        id: 5,
-        src: '/src/assets/carrom.png',
-        alt: 'Carrom',
-        label: 'Carrom',
-        span: 'short',
-    },
-    {
-        id: 6,
-        src: '/src/assets/chess.png',
-        alt: 'Chess',
-        label: 'Chess',
-        span: 'short',
-    },
-    {
-        id: 7,
-        src: '/src/assets/kho-kho-girls.png',
-        alt: 'Girls Kho-Kho',
-        label: 'Girls Kho-Kho',
-        span: 'tall',
-    },
-    {
-        id: 8,
-        src: '/src/assets/gully-cricket-girls.png',
-        alt: 'Gully Cricket',
-        label: 'Gully Cricket (Girls)',
-        span: 'short',
-    },
-    {
-        id: 9,
-        src: '/src/assets/kabbadi.png',
-        alt: 'Kabaddi',
-        label: 'Kabaddi',
-        span: 'short',
-    },
-    {
-        id: 10,
-        src: '/src/assets/table-tennis.png',
-        alt: 'Table Tennis',
-        label: 'Table Tennis',
-        span: 'tall',
-    },
-    {
-        id: 11,
-        src: '/src/assets/volleyball.png',
-        alt: 'Volleyball',
-        label: 'Volleyball',
-        span: 'short',
-    },
-    {
-        id: 12,
-        src: '/src/assets/badminton-girls.png',
-        alt: 'Badminton (Girls)',
-        label: 'Badminton (Girls)',
-        span: 'short',
-    },
-    {
-        id: 13,
-        src: '/src/assets/tug-of-war.png',
-        alt: 'Tug of War Action',
-        label: 'Tug of War Action',
-        span: 'tall',
-    },
-    {
-        id: 14,
-        src: '/src/assets/cricket.png',
-        alt: 'Championship Cricket',
-        label: 'Championship Cricket',
-        span: 'short',
-    },
-    {
-        id: 15,
-        src: '/src/assets/kabbadi.png',
-        alt: 'Kabaddi Finals',
-        label: 'Kabaddi Finals',
-        span: 'short',
-    },
-];
+    img1, img2, img3, img4, img5, img6, img7, img8, img9, img10,
+    img11, img12, img13, img14, img15, img16, img17, img18, img19, img20,
+    img21, img22, img23, img24, img25, img26, img27, img28, img29,
+].map((src, index) => ({
+    id: index + 1,
+    src,
+    alt: `Sports Week 2025 – Photo ${index + 1}`,
+    label: `Sports Week 2025`,
+}));
